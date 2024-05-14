@@ -38,28 +38,18 @@ document.addEventListener('DOMContentLoaded', () => {
         <a href="${sample.instagram}" target="_blank">View Instagram Reel</a>
       `;
 
-      // Show the ad and set up download button visibility after ad completes
-      showAd(() => {
-        const downloadBtn = document.getElementById('download-btn');
-        downloadBtn.style.display = 'block';
-        downloadBtn.onclick = () => {
-          window.location.href = sample.download;
-        };
+      const followBtn = document.getElementById('follow-btn');
+      followBtn.addEventListener('click', () => {
+        setTimeout(() => {
+          const downloadBtn = document.getElementById('download-btn');
+          downloadBtn.style.display = 'block';
+          downloadBtn.onclick = () => {
+            window.location.href = sample.download;
+          };
+        }, 5000); // Wait 5 seconds after clicking the follow button to show the download link
       });
     } else {
       document.getElementById('sample-details').innerHTML = '<p>Sample not found.</p>';
     }
   }
 });
-
-function showAd(callback) {
-  // Assuming the ad network provides an API to detect when an ad is done
-  const adContainer = document.getElementById('ad-container');
-  adContainer.innerHTML = '<div id="ad"></div>';
-
-  // Simulate ad completion after 5 seconds (replace this with actual ad logic)
-  setTimeout(() => {
-    adContainer.innerHTML = '<p>Ad finished. You can now download your sample.</p>';
-    callback();
-  }, 5000);
-}
