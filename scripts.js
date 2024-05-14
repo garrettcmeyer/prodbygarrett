@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         bpm: '120',
         key: 'C Major',
         download: 'https://example.com/sample01.mp3',
-        instagram: 'https://www.instagram.com/p/01/'
+        instagram: 'https://www.instagram.com/reel/C5xCo4-LO2u/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
       },
       '20230514': {
         bpm: '130',
