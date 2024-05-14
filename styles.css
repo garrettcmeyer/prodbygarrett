@@ -35,7 +35,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #4CAF50; /* Updated color */
+  color: #0b99ea; /* Updated color */
 }
 
 .search-container, .results-container {
@@ -63,14 +63,14 @@ button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #4CAF50; /* Updated color */
+  background-color: #0b99ea; /* Updated color */
   color: #121212;
   font-weight: bold;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #45a049; /* Updated color */
+  background-color: #0b99ea; /* Updated color */
 }
 
 #follow-container {
