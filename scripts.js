@@ -18,13 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
         bpm: '120',
         key: 'C Major',
         download: 'https://example.com/sample01.mp3',
-        instagram: 'https://instagram.com/p/01'
+        instagram: 'https://www.instagram.com/p/01/'
       },
       '20230514': {
         bpm: '130',
         key: 'G Minor',
         download: 'https://example.com/sample20230514.mp3',
-        instagram: 'https://instagram.com/p/20230514'
+        instagram: 'https://www.instagram.com/p/20230514/'
       }
     };
 
@@ -35,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <h3>Sample Code: ${code}</h3>
         <p>BPM: ${sample.bpm}</p>
         <p>Key: ${sample.key}</p>
-        <a href="${sample.instagram}" target="_blank">View Instagram Reel</a>
       `;
 
       const embedUrl = `https://www.instagram.com/p/${code}/embed`;
@@ -43,16 +42,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const reelEmbedContainer = document.getElementById('reel-embed-container');
       reelEmbedContainer.innerHTML = `<iframe src="${embedUrl}" width="400" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>`;
 
-      const followBtn = document.getElementById('follow-btn');
-      followBtn.addEventListener('click', () => {
-        setTimeout(() => {
-          const downloadBtn = document.getElementById('download-btn');
-          downloadBtn.style.display = 'block';
-          downloadBtn.onclick = () => {
-            window.location.href = sample.download;
-          };
-        }, 5000); // Wait 5 seconds after clicking the follow button to show the download link
-      });
+      const downloadBtn = document.getElementById('download-btn');
+      downloadBtn.style.display = 'block';
+      downloadBtn.onclick = () => {
+        window.location.href = sample.download;
+      };
     } else {
       document.getElementById('sample-details').innerHTML = '<p>Sample not found.</p>';
     }
