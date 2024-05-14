@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Example data, replace this with actual data fetching logic
     const samples = {
       '01': {
-        bpm: '120',
-        key: 'C Major',
+        bpm: '140',
+        key: 'D Major',
         download: 'https://example.com/sample01.mp3',
         instagram: 'https://www.instagram.com/reel/C5xCo4-LO2u/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=='
       },
