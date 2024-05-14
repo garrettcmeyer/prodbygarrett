@@ -35,7 +35,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #0b99ea; /* Updated color */
+  color: #4CAF50; /* Updated color */
 }
 
 .search-container, .results-container {
@@ -95,18 +95,29 @@ footer {
   color: #fff;
   text-align: center;
   padding: 20px;
-  position: fixed;
-  width: 100%;
+  position: static;
   bottom: 0;
-  display: none; /* Hide footer */
+  width: 100%;
+}
+
+.social-links {
+  margin: 10px 0;
 }
 
 .social-links a {
   color: #e0e0e0;
   text-decoration: none;
   margin: 0 10px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .social-links a:hover {
-  color: #4CAF50; /* Updated color */
+  color: #0b99ea; /* Updated color */
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
 }
