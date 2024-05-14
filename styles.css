@@ -35,7 +35,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #ffa500;
+  color: #4CAF50; /* Updated color */
 }
 
 .search-container, .results-container {
@@ -63,14 +63,14 @@ button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #ffa500;
+  background-color: #4CAF50; /* Updated color */
   color: #121212;
   font-weight: bold;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #e59400;
+  background-color: #45a049; /* Updated color */
 }
 
 #follow-container {
@@ -98,6 +98,7 @@ footer {
   position: fixed;
   width: 100%;
   bottom: 0;
+  display: none; /* Hide footer */
 }
 
 .social-links a {
@@ -106,6 +107,6 @@ footer {
   margin: 0 10px;
 }
 
-social-links a:hover {
-  color: #ffa500;
+.social-links a:hover {
+  color: #4CAF50; /* Updated color */
 }
