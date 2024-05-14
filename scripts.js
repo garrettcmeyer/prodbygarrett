@@ -38,6 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <a href="${sample.instagram}" target="_blank">View Instagram Reel</a>
       `;
 
+      const embedUrl = `https://www.instagram.com/p/${code}/embed`;
+
+      const reelEmbedContainer = document.getElementById('reel-embed-container');
+      reelEmbedContainer.innerHTML = `<iframe src="${embedUrl}" width="400" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>`;
+
       const followBtn = document.getElementById('follow-btn');
       followBtn.addEventListener('click', () => {
         setTimeout(() => {
