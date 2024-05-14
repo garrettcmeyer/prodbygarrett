@@ -1,46 +1,65 @@
 function searchSample() {
-    const code = document.getElementById('search-bar').value;
-    if (code) {
-      window.location.href = `results.html?code=${code}`;
-    } else {
-      alert('Please enter a code.');
-    }
+  const code = document.getElementById('search-bar').value;
+  if (code) {
+    window.location.href = `results.html?code=${code}`;
+  } else {
+    alert('Please enter a code.');
   }
-  
-  document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
-  
-    if (code && document.getElementById('sample-details')) {
-      // Example data, replace this with actual data fetching logic
-      const samples = {
-        '01': {
-          bpm: '120',
-          key: 'C Major',
-          download: 'https://example.com/sample01.mp3',
-          instagram: 'https://instagram.com/p/01'
-        },
-        '20230514': {
-          bpm: '130',
-          key: 'G Minor',
-          download: 'https://example.com/sample20230514.mp3',
-          instagram: 'https://instagram.com/p/20230514'
-        }
-      };
-  
-      const sample = samples[code];
-  
-      if (sample) {
-        document.getElementById('sample-details').innerHTML = `
-          <h3>Sample Code: ${code}</h3>
-          <p>BPM: ${sample.bpm}</p>
-          <p>Key: ${sample.key}</p>
-          <a href="${sample.download}" target="_blank">Download Sample</a>
-          <br>
-          <a href="${sample.instagram}" target="_blank">View Instagram Reel</a>
-        `;
-      } else {
-        document.getElementById('sample-details').innerHTML = '<p>Sample not found.</p>';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get('code');
+
+  if (code && document.getElementById('sample-details')) {
+    // Example data, replace this with actual data fetching logic
+    const samples = {
+      '01': {
+        bpm: '120',
+        key: 'C Major',
+        download: 'https://example.com/sample01.mp3',
+        instagram: 'https://instagram.com/p/01'
+      },
+      '20230514': {
+        bpm: '130',
+        key: 'G Minor',
+        download: 'https://example.com/sample20230514.mp3',
+        instagram: 'https://instagram.com/p/20230514'
+      }
+    };
+
+    const sample = samples[code];
+
+    if (sample) {
+      document.getElementById('sample-details').innerHTML = `
+        <h3>Sample Code: ${code}</h3>
+        <p>BPM: ${sample.bpm}</p>
+        <p>Key: ${sample.key}</p>
+        <a href="${sample.instagram}" target="_blank">View Instagram Reel</a>
+      `;
+
+      // Show the ad and set up download button visibility after ad completes
+      showAd(() => {
+        const downloadBtn = document.getElementById('download-btn');
+        downloadBtn.style.display = 'block';
+        downloadBtn.onclick = () => {
+          window.location.href = sample.download;
+        };
+      });
+    } else {
+      document.getElementById('sample-details').innerHTML = '<p>Sample not found.</p>';
     }
   }
 });
+
+function showAd(callback) {
+  // Assuming the ad network provides an API to detect when an ad is done
+  const adContainer = document.getElementById('ad-container');
+  adContainer.innerHTML = '<div id="ad"></div>';
+
+  // Simulate ad completion after 5 seconds (replace this with actual ad logic)
+  setTimeout(() => {
+    adContainer.innerHTML = '<p>Ad finished. You can now download your sample.</p>';
+    callback();
+  }, 5000);
+}
