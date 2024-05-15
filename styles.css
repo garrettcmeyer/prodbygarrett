@@ -4,6 +4,9 @@ body {
   color: #e0e0e0;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 header {
@@ -35,17 +38,21 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #4CAF50; /* Updated color */
+  color: #0b99ea;
 }
 
-.search-container, .results-container {
+main {
+  flex: 1;
+}
+
+.search-container {
   text-align: center;
   margin: 50px auto;
   width: 80%;
   max-width: 600px;
 }
 
-.search-container h2, .results-container h2 {
+.search-container h2 {
   font-size: 1.8em;
 }
 
@@ -63,31 +70,14 @@ button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #0b99ea; /* Updated color */
+  background-color: #0b99ea;
   color: #121212;
   font-weight: bold;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #0b99ea; /* Updated color */
-}
-
-#follow-container {
-  margin: 20px 0;
-}
-
-.instagram-follow-button {
-  background-color: #e4405f;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.instagram-follow-button:hover {
-  background-color: #c5364f;
+  background-color: #0b99ea;
 }
 
 footer {
@@ -95,8 +85,6 @@ footer {
   color: #fff;
   text-align: center;
   padding: 20px;
-  position: static;
-  bottom: 0;
   width: 100%;
 }
 
@@ -113,7 +101,7 @@ footer {
 }
 
 .social-links a:hover {
-  color: #0b99ea; /* Updated color */
+  color: #4CAF50;
 }
 
 .social-icon {
