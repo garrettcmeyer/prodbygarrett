@@ -1,7 +1,17 @@
+'use client';
+
 import Image from "next/image";
 import MusicPortfolio from "@/components/MusicPortfolio";
+import { useState } from 'react';
+import RecordingSessionBookingPopup from '@/components/RecordingSessionBookingPopup';
+import { ContactMeButton } from '@/components/ContactMeButton';
 
 export default function Home() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const openPopup = () => setIsPopupOpen(true);
+  const closePopup = () => setIsPopupOpen(false);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       {/* Existing content */}
@@ -16,10 +26,39 @@ export default function Home() {
       {/* Add MusicPortfolio component */}
       <MusicPortfolio />
 
+      {/* Add button to open popup and contact information */}
+      <div className="flex flex-col items-center mt-8">
+        <button
+          onClick={openPopup}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+        >
+          Contact Me
+        </button>
+        <div className="mt-2 text-center">
+          <p>Phone: 760-642-8517</p>
+          <p>Email: garrettcmeyer@gmail.com</p>
+        </div>
+      </div>
+
+      {/* Add ContactMeButton component */}
+      <div className="mt-8">
+        <ContactMeButton />
+      </div>
+
       {/* Existing content */}
       <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
         {/* ... existing code ... */}
       </div>
+
+      {/* Render popup component conditionally */}
+      {isPopupOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="relative z-10 w-full max-w-lg">
+            <RecordingSessionBookingPopup onClose={closePopup} />
+          </div>
+        </div>
+      )}
     </main>
   );
 }

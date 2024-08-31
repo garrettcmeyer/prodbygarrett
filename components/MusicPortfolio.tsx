@@ -8,7 +8,7 @@ const tracks = [
   {
     id: 1,
     title: 'Flip the Script',
-    artist: 'Chloe Hansen',
+    artist: 'Chloe Hansen', 
     coverArt: '/songs/flipthescript/flipthescript.png',
     genre: 'Indie',
     releaseDate: '2024-08-23',
@@ -158,33 +158,38 @@ export default function MusicPortfolio() {
   }, [sortBy])
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 p-8">
-      <header className="mb-12 text-center">
-        <h1 className="text-4xl font-bold mb-4 text-black">
-          Garrett Meyer
-        </h1>
-        <p className="text-xl text-gray-600">
-          Producer, Engineer, Songwriter
-        </p>
-      </header>
-
-      <div className="mb-8 flex justify-end">
-        <select
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value as 'genre' | 'releaseDate')}
-          className="bg-white text-gray-800 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-        >
-          <option value="releaseDate">Sort by Release Date</option>
-          <option value="genre">Sort by Genre</option>
-        </select>
+    <div className="min-h-screen bg-gray-100 text-gray-800">
+      <div className="relative h-96 mb-12">
+        <img src="/banner.jpg" alt="Banner" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white">
+          <h1 className="text-5xl font-bold mb-4">
+            Garrett Meyer
+          </h1>
+          <p className="text-2xl">
+            Producer, Engineer, Songwriter
+          </p>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {filteredTracks.map((track) => (
-          <div key={track.id}>
-            <TrackCard track={track} />
-          </div>
-        ))}
+      <div className="container mx-auto px-4">
+        <div className="mb-8 flex justify-end">
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as 'genre' | 'releaseDate')}
+            className="bg-white text-gray-800 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
+          >
+            <option value="releaseDate">Sort by Release Date</option>
+            <option value="genre">Sort by Genre</option>
+          </select>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {filteredTracks.map((track) => (
+            <div key={track.id}>
+              <TrackCard track={track} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
