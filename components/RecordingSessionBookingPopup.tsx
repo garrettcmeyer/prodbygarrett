@@ -32,7 +32,7 @@ export default function BookingForm({ onClose }: BookingFormProps) {
     <div className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center p-4">
       <Card className="w-full max-w-lg">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-2xl font-bold">Book a Session</CardTitle>
+          <CardTitle className="text-2xl font-bold">Book a Recording Session</CardTitle>
           <Button variant="ghost" size="icon" onClick={() => { setIsOpen(false); onClose(); }}>
             <X className="h-4 w-4" />
           </Button>
