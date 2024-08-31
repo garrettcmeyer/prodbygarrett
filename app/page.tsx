@@ -4,7 +4,6 @@ import Image from "next/image";
 import MusicPortfolio from "@/components/MusicPortfolio";
 import { useState } from 'react';
 import RecordingSessionBookingPopup from '@/components/RecordingSessionBookingPopup';
-import { ContactMeButton } from '@/components/ContactMeButton';
 
 export default function Home() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -40,10 +39,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Add ContactMeButton component */}
-      <div className="mt-8">
-        <ContactMeButton />
-      </div>
 
       {/* Existing content */}
       <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
