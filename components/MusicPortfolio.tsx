@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { FaSpotify, FaApple, FaPlay, FaPause } from 'react-icons/fa'
+import GradualSpacing from '@/components/magicui/gradual-spacing'
+import WordFadeIn from '@/components/magicui/word-fade-in'
 
 // Mock data for tracks
 const tracks = [
@@ -16,7 +18,7 @@ const tracks = [
     appleMusicLink: 'https://music.apple.com/us/album/flip-the-script/1761283657?i=1761283658',
     audioPreview: '/songs/flipthescript/Flip_the_Script.Master.wav',
     startTime: 30, // Start at 30 seconds
-    endTime: 105, // End at 60 seconds
+    endTime: 105, // End at 105 seconds
   },
   {
     id: 2,
@@ -145,6 +147,11 @@ const TrackCard = ({ track }: { track: typeof tracks[0] }) => {
 export default function MusicPortfolio() {
   const [sortBy, setSortBy] = useState<'genre' | 'releaseDate'>('releaseDate')
   const [filteredTracks, setFilteredTracks] = useState(tracks)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   useEffect(() => {
     const sorted = [...tracks].sort((a, b) => {
@@ -157,39 +164,56 @@ export default function MusicPortfolio() {
     setFilteredTracks(sorted)
   }, [sortBy])
 
+  if (!isClient) {
+    return null
+  }
+
   return (
     <div className="min-h-screen bg-gray-100 text-gray-800">
       <div className="relative h-96 mb-12">
         <img src="/banner.jpg" alt="Banner" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white">
-          <h1 className="text-5xl font-bold mb-4">
-            Garrett Meyer
+          <h1 className="text-5xl font-bold mb-4 text-white">
+            <WordFadeIn words="Garrett Meyer" delay={0.1} className="text-white" />
           </h1>
-          <p className="text-2xl">
-            Producer, Engineer, Songwriter
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.75, duration: 0.5 }}
+          >
+            <GradualSpacing
+              text="Producer, Engineer, Songwriter"
+              className="text-center text-2xl font-bold"
+            />
+          </motion.div>
         </div>
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="mb-8 flex justify-end">
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as 'genre' | 'releaseDate')}
-            className="bg-white text-gray-800 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-teal-500"
-          >
-            <option value="releaseDate">Sort by Release Date</option>
-            <option value="genre">Sort by Genre</option>
-          </select>
-        </div>
+        {/* Portfolio Section */}
+        <section>
+          <h2 className="text-3xl font-bold mb-8 text-center">Portfolio</h2>
+          <div className="mb-8 flex justify-end">
+            <motion.select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as 'genre' | 'releaseDate')}
+              className="bg-white text-black border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500 cursor-pointer appearance-none"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <option value="releaseDate">Sort by Release Date</option>
+              <option value="genre">Sort by Genre</option>
+            </motion.select>
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {filteredTracks.map((track) => (
-            <div key={track.id}>
-              <TrackCard track={track} />
-            </div>
-          ))}
-        </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {filteredTracks.map((track) => (
+              <div key={track.id}>
+                <TrackCard track={track} />
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   )
