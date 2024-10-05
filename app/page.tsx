@@ -28,10 +28,6 @@ export default function Home() {
       <div className="w-full h-16"></div>
       
 
-      <div className="w-full">
-        <SkillsCloud />
-      </div>
-
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex p-4 sm:p-8 lg:p-24">
         {/* ... existing code ... */}
       </div>
