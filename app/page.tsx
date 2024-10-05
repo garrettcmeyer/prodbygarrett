@@ -3,6 +3,7 @@
 import Image from "next/image";
 import MusicPortfolio from "@/components/MusicPortfolio";
 import LinkedInStyleProfile from "@/components/LinkedInStyleProfile";
+import SkillsCloud from "@/components/SkillsCloud";
 import { useState } from 'react';
 import RecordingSessionBookingPopup from '@/components/RecordingSessionBookingPopup';
 
@@ -26,9 +27,9 @@ export default function Home() {
       {/* Add space between portfolio and LinkedIn profile */}
       <div className="w-full h-16"></div>
       
-      {/* Add LinkedInStyleProfile component */}
+
       <div className="w-full">
-        <LinkedInStyleProfile />
+        <SkillsCloud />
       </div>
 
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex p-4 sm:p-8 lg:p-24">

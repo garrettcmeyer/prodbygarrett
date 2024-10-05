@@ -73,13 +73,6 @@ export default function Component() {
     ],
     education: [
       {
-        logo: "/icons/sagecreek.webp",
-        title: "High School Diploma",
-        subtitle: "Sage Creek High School",
-        date: "Graduation: May 2024",
-        description: ""
-      },
-      {
         logo: "/icons/chicostate.jpg",
         title: "BA in Recording Arts",
         subtitle: "Chico State",
