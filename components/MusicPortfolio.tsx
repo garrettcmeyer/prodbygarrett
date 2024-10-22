@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
-import { FaSpotify, FaApple, FaPlay, FaPause } from 'react-icons/fa'
+import { motion, AnimatePresence } from 'framer-motion'
+import { FaSpotify, FaApple, FaPlay, FaPause, FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 import GradualSpacing from '@/components/magicui/gradual-spacing'
 import WordFadeIn from '@/components/magicui/word-fade-in'
 
@@ -12,7 +12,7 @@ const tracks = [
     title: 'Flip the Script',
     artist: 'Chloe Hansen', 
     coverArt: '/songs/flipthescript/flipthescript.png',
-    genre: 'Indie',
+    credits: 'Produced and played all instruments, Co-Wrote, Mixed, Created Cover Art',
     releaseDate: '2024-08-23',
     spotifyLink: 'https://open.spotify.com/track/2QDDLUzeu1fcQcMflKi5Eh?si=83ca67c1f9ff4cc3',
     appleMusicLink: 'https://music.apple.com/us/album/flip-the-script/1761283657?i=1761283658',
@@ -25,7 +25,7 @@ const tracks = [
     title: 'Attached',
     artist: 'GoodMerit, Chloe Hansen',
     coverArt: '/songs/attached/attachedart.jpg',
-    genre: 'Pop',
+    credits: 'Fully Wrote, Produced, Mixed, Mastered',
     releaseDate: '2023-09-15',
     spotifyLink: 'https://open.spotify.com/track/772g96xpW1U3ZgYwgxGSJJ?si=f05165adec8c44e4',
     appleMusicLink: 'https://music.apple.com/us/album/attached-feat-chloe-hansen/1707646382?i=1707646383',
@@ -38,7 +38,7 @@ const tracks = [
     title: 'Green Chalk',
     artist: 'GoodMerit',
     coverArt: '/songs/greenchalk/greenchalk.png',
-    genre: 'HipHop',
+    credits: 'Co-Wrote, Mixed, Mastered',
     releaseDate: '2021-01-15',
     spotifyLink: 'https://open.spotify.com/track/1BTPGWRnRvyNWvfjSVIkGK?si=5d0ac9009dfd4623',
     appleMusicLink: 'https://music.apple.com/us/album/green-chalk/1548225140?i=1548225142',
@@ -123,7 +123,7 @@ const TrackCard = ({ track }: { track: typeof tracks[0] }) => {
       <div className="relative aspect-square">
         <img src={track.coverArt} alt={`${track.title} cover art`} className="w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-          <p className="text-white text-sm">{track.genre}</p>
+          <p className="text-white text-sm text-center px-4">{track.credits}</p>
         </div>
       </div>
       <div className="p-4">
@@ -145,37 +145,58 @@ const TrackCard = ({ track }: { track: typeof tracks[0] }) => {
 }
 
 export default function MusicPortfolio() {
-  const [sortBy, setSortBy] = useState<'genre' | 'releaseDate'>('releaseDate')
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
   const [filteredTracks, setFilteredTracks] = useState(tracks)
   const [isClient, setIsClient] = useState(false)
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false)
 
   useEffect(() => {
     setIsClient(true)
+    const timer = setTimeout(() => {
+      setIsAnimationComplete(true)
+    }, 2000) // Adjust this timing as needed
+    return () => clearTimeout(timer)
   }, [])
 
   useEffect(() => {
     const sorted = [...tracks].sort((a, b) => {
-      if (sortBy === 'genre') {
-        return a.genre.localeCompare(b.genre)
-      } else {
-        return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
-      }
+      const dateA = new Date(a.releaseDate).getTime()
+      const dateB = new Date(b.releaseDate).getTime()
+      return sortOrder === 'asc' ? dateA - dateB : dateB - dateA
     })
     setFilteredTracks(sorted)
-  }, [sortBy])
+  }, [sortOrder])
 
   if (!isClient) {
     return null
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800">
-      <div className="relative h-96 mb-12">
+    <div className="min-h-screen bg-gray-100 text-gray-800 overflow-hidden">
+      <motion.div
+        initial={{ height: "100vh", width: "100vw" }}
+        animate={{ 
+          height: isAnimationComplete ? "24rem" : "100vh",
+          width: "100%",
+          transition: { duration: 1, ease: "easeInOut" }
+        }}
+        className="relative mb-12"
+      >
         <img src="/banner.jpg" alt="Banner" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white">
-          <h1 className="text-5xl font-bold mb-4 text-white">
+        <motion.div 
+          className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: isAnimationComplete ? 0.5 : 1 }}
+          transition={{ duration: 1 }}
+        >
+          <motion.h1 
+            className="text-5xl font-bold mb-4 text-white"
+            initial={{ scale: 1.5 }}
+            animate={{ scale: isAnimationComplete ? 1 : 1.5 }}
+            transition={{ duration: 1 }}
+          >
             <WordFadeIn words="Garrett Meyer" delay={0.1} className="text-white" />
-          </h1>
+          </motion.h1>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -186,35 +207,51 @@ export default function MusicPortfolio() {
               className="text-center text-2xl font-bold"
             />
           </motion.div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      <div className="container mx-auto px-4">
-        {/* Portfolio Section */}
-        <section>
-          <h2 className="text-3xl font-bold mb-8 text-center">Portfolio</h2>
-          <div className="mb-8 flex justify-end">
-            <motion.select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as 'genre' | 'releaseDate')}
-              className="bg-white text-black border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-500 cursor-pointer appearance-none"
-              whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <option value="releaseDate">Sort by Release Date</option>
-              <option value="genre">Sort by Genre</option>
-            </motion.select>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {filteredTracks.map((track) => (
-              <div key={track.id}>
-                <TrackCard track={track} />
+      <AnimatePresence>
+        {isAnimationComplete && (
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="container mx-auto px-4"
+          >
+            {/* Portfolio Section */}
+            <section>
+              <div className="mb-8 flex justify-end">
+                <motion.button
+                  onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
+                  className="bg-white text-black px-6 py-2 rounded-md shadow-sm hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 font-sans border border-gray-200"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {sortOrder === 'asc' ? (
+                    <>
+                      <FaSortAmountUp className="mr-2" />
+                      <span>Oldest First</span>
+                    </>
+                  ) : (
+                    <>
+                      <FaSortAmountDown className="mr-2" />
+                      <span>Newest First</span>
+                    </>
+                  )}
+                </motion.button>
               </div>
-            ))}
-          </div>
-        </section>
-      </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                {filteredTracks.map((track) => (
+                  <div key={track.id}>
+                    <TrackCard track={track} />
+                  </div>
+                ))}
+              </div>
+            </section>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
