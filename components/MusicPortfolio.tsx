@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaSpotify, FaApple, FaPlay, FaPause, FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
+import { SiApplemusic } from 'react-icons/si'
 import GradualSpacing from '@/components/magicui/gradual-spacing'
 import WordFadeIn from '@/components/magicui/word-fade-in'
 
@@ -136,7 +137,7 @@ const TrackCard = ({ track }: { track: typeof tracks[0] }) => {
             <FaSpotify size={24} />
           </a>
           <a href={track.appleMusicLink} target="_blank" rel="noopener noreferrer" className="text-pink-500 hover:text-pink-600">
-            <FaApple size={24} />
+            <SiApplemusic size={24} />
           </a>
         </div>
       </div>
@@ -176,7 +177,7 @@ export default function MusicPortfolio() {
       <motion.div
         initial={{ height: "100vh", width: "100vw" }}
         animate={{ 
-          height: isAnimationComplete ? "24rem" : "100vh",
+          height: isAnimationComplete ? "16rem" : "100vh",
           width: "100%",
           transition: { duration: 1, ease: "easeInOut" }
         }}
@@ -190,7 +191,7 @@ export default function MusicPortfolio() {
           transition={{ duration: 1 }}
         >
           <motion.h1 
-            className="text-5xl font-bold mb-4 text-white"
+            className="text-4xl font-bold mb-3 text-white"
             initial={{ scale: 1.5 }}
             animate={{ scale: isAnimationComplete ? 1 : 1.5 }}
             transition={{ duration: 1 }}
@@ -204,7 +205,7 @@ export default function MusicPortfolio() {
           >
             <GradualSpacing
               text="Producer, Engineer, Songwriter"
-              className="text-center text-2xl font-bold"
+              className="text-center text-xl font-bold"
             />
           </motion.div>
         </motion.div>
@@ -230,12 +231,12 @@ export default function MusicPortfolio() {
                   {sortOrder === 'asc' ? (
                     <>
                       <FaSortAmountUp className="mr-2" />
-                      <span>Oldest First</span>
+                      <span>Oldest</span>
                     </>
                   ) : (
                     <>
                       <FaSortAmountDown className="mr-2" />
-                      <span>Newest First</span>
+                      <span>Newest</span>
                     </>
                   )}
                 </motion.button>
