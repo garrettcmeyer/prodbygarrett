@@ -208,7 +208,7 @@
               width: "100%",
               transition: { duration: 1, ease: "easeInOut" }
             }}
-            className="relative mb-12"
+            className="relative mb-12 sm:mb-14"
           >
             <img src="/banner.jpg" alt="Banner" className="w-full h-full object-cover" />
             <motion.div 
