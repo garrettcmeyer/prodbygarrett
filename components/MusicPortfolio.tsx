@@ -1,4 +1,3 @@
-    // Start of Selection
     "use client";
     import React, { useState, useEffect, useRef } from 'react'
     import { motion, AnimatePresence } from 'framer-motion'
@@ -6,10 +5,11 @@
     import { SiApplemusic } from 'react-icons/si'
     import GradualSpacing from '@/components/magicui/gradual-spacing'
     import WordFadeIn from '@/components/magicui/word-fade-in'
+    import VideoPortfolio from './VideoPortfolio'
     
     // Mock data for tracks
     const tracks = [
-      {
+      { 
         id: 1,
         title: 'Flip the Script',
         artist: 'Chloe Hansen', 
@@ -50,19 +50,6 @@
       },
       {
         id: 4,
-        title: 'Beautiful Girls',
-        artist: 'okjai',
-        coverArt: '/songs/beautifulgirls/okjaibeautiful.jpg',
-        credits: 'Produced, Recorded',
-        releaseDate: '2021-12-24',
-        spotifyLink: 'https://open.spotify.com/track/6YcPu714KmFSk0lqY9e0qw?si=332e8b98d1174719',
-        appleMusicLink: 'https://music.apple.com/us/album/green-chalk/1548225140?i=1548225142',
-        audioPreview: '/songs/beautifulgirls/beautifulgirls.mp3',
-        startTime: 47,
-        endTime: 80,
-      },
-      {
-        id: 5,
         title: 'Again',
         artist: 'Garrett Meyer, Chloe Hansen, Keegan Boustead',
         coverArt: '/songs/again/againcoverart.jpg',
@@ -75,7 +62,7 @@
         endTime: 75,
       },
       {
-        id: 6,
+        id: 5,
         title: 'Least of Your Worries',
         artist: 'Chloe Hansen',
         coverArt: '/songs/leastofyourworries/least_art.jpg',
@@ -84,6 +71,19 @@
         spotifyLink: 'https://open.spotify.com/track/3zysxe6yisvNt958HZDJPe?si=2e80732e18ec4c36',
         appleMusicLink: 'https://music.apple.com/us/album/least-of-your-worries/1787794697?i=1787794698',
         audioPreview: '/songs/again/LeastFinal.wav',
+        startTime: 54,
+        endTime: 75,
+      },
+      {
+        id: 6,
+        title: 'Summer Fling',
+        artist: 'Keegan Boustead',
+        coverArt: '/songs/summerfling/SummerFlingCover.png',
+        credits: 'Co-Wrote, Produced, Recorded, Mix/Mastered',
+        releaseDate: '2025-04-18',
+        spotifyLink: 'https://open.spotify.com/track/1EcEZfOunjTeTPMagqkmZz?si=2a6887de68094e0b',
+        appleMusicLink: 'https://music.apple.com/us/album/least-of-your-worries/1787794697?i=1787794698',
+        audioPreview: '/songs/again/SummerFling.wav',
         startTime: 54,
         endTime: 75,
       },
@@ -186,30 +186,30 @@
     }
     
     export default function MusicPortfolio() {
-      const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
-      const [filteredTracks, setFilteredTracks] = useState(tracks)
-      const [isClient, setIsClient] = useState(false)
-      const [isAnimationComplete, setIsAnimationComplete] = useState(false)
+      const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+      const [filteredTracks, setFilteredTracks] = useState(tracks);
+      const [isClient, setIsClient] = useState(false);
+      const [isAnimationComplete, setIsAnimationComplete] = useState(false);
     
       useEffect(() => {
-        setIsClient(true)
+        setIsClient(true);
         const timer = setTimeout(() => {
-          setIsAnimationComplete(true)
-        }, 2000) // Adjust this timing as needed
-        return () => clearTimeout(timer)
-      }, [])
+          setIsAnimationComplete(true);
+        }, 2000); // Adjust this timing as needed
+        return () => clearTimeout(timer);
+      }, []);
     
       useEffect(() => {
         const sorted = [...tracks].sort((a, b) => {
-          const dateA = new Date(a.releaseDate).getTime()
-          const dateB = new Date(b.releaseDate).getTime()
-          return sortOrder === 'asc' ? dateA - dateB : dateB - dateA
-        })
-        setFilteredTracks(sorted)
-      }, [sortOrder])
+          const dateA = new Date(a.releaseDate).getTime();
+          const dateB = new Date(b.releaseDate).getTime();
+          return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+        });
+        setFilteredTracks(sorted);
+      }, [sortOrder]);
     
       if (!isClient) {
-        return null
+        return null;
       }
     
       return (
@@ -260,8 +260,7 @@
                 transition={{ duration: 0.5 }}
                 className="container mx-auto px-4 sm:px-6 lg:px-8"
               >
-                {/* Portfolio Section */}
-                <section>
+                <section className="mb-16">
                   <div className="mb-6 sm:mb-8 flex justify-end">
                     <motion.button
                       onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
@@ -282,7 +281,7 @@
                       )}
                     </motion.button>
                   </div>
-    
+
                   <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                     {filteredTracks.map((track) => (
                       <div key={track.id}>
@@ -295,5 +294,5 @@
             )}
           </AnimatePresence>
         </div>
-      )
+      );
     }
