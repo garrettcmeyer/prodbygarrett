@@ -6,7 +6,10 @@
     import GradualSpacing from '@/components/magicui/gradual-spacing'
     import WordFadeIn from '@/components/magicui/word-fade-in'
     import VideoPortfolio from './VideoPortfolio'
-    
+
+    // Add favicon using next/head or react-helmet
+    import Head from 'next/head'
+
     // Mock data for tracks
     const tracks = [
       { 
@@ -59,7 +62,7 @@
         appleMusicLink: 'https://music.apple.com/us/album/again-feat-chloe-hansen-keegan-boustead/1783987779?i=1783987781',
         audioPreview: '/songs/again/MY_NAME_AGAIN.MASTER.02.wav',
         startTime: 54,
-        endTime: 75,
+        endTime: 90,
       },
       {
         id: 5,
@@ -70,7 +73,7 @@
         releaseDate: '2024-12-30',
         spotifyLink: 'https://open.spotify.com/track/3zysxe6yisvNt958HZDJPe?si=2e80732e18ec4c36',
         appleMusicLink: 'https://music.apple.com/us/album/least-of-your-worries/1787794697?i=1787794698',
-        audioPreview: '/songs/again/LeastFinal.wav',
+        audioPreview: '/songs/leastofyourworries/LeastFinal.wav',
         startTime: 54,
         endTime: 75,
       },
@@ -83,9 +86,35 @@
         releaseDate: '2025-04-18',
         spotifyLink: 'https://open.spotify.com/track/1EcEZfOunjTeTPMagqkmZz?si=2a6887de68094e0b',
         appleMusicLink: 'https://music.apple.com/us/album/least-of-your-worries/1787794697?i=1787794698',
-        audioPreview: '/songs/again/SummerFling.wav',
+        audioPreview: '/songs/summerfling/SummerFling.wav',
         startTime: 54,
-        endTime: 75,
+        endTime: 85,
+      },
+      {
+        id: 6,
+        title: 'Banky',
+        artist: 'nollie',
+        coverArt: '/songs/banky/banky.png',
+        credits: 'Co-Wrote, Produced, Recorded, Mix/Mastered',
+        releaseDate: '2025-06-20',
+        spotifyLink: 'https://open.spotify.com/track/68Xm4i0DJaS5IoVK4I4Cnl?si=9f6e1933b4ee4404',
+        appleMusicLink: 'https://music.apple.com/us/album/banky-single/1821442870',
+        audioPreview: '/songs/banky/banky.wav',
+        startTime: 110,
+        endTime: 130,
+      },
+      {
+        id: 7,
+        title: 'Care',
+        artist: 'Sarah Good',
+        coverArt: '/songs/care/care.jpg',
+        credits: 'Recorded, Mix/Mastered',
+        releaseDate: '2025-06-26',
+        spotifyLink: 'https://open.spotify.com/track/7KjKVekScH29QQHymF4Hhs?si=ec29b2fb34994935',
+        appleMusicLink: 'https://music.apple.com/us/song/care/1822975845',
+        audioPreview: '/songs/care/care.wav',
+        startTime: 82,
+        endTime: 110,
       },
     ]
     
@@ -213,86 +242,91 @@
       }
     
       return (
-        <div className="min-h-screen bg-gray-100 text-gray-800 overflow-hidden">
-          <motion.div
-            initial={{ height: "100vh", width: "100vw" }}
-            animate={{ 
-              height: isAnimationComplete ? "16rem" : "100vh",
-              width: "100%",
-              transition: { duration: 1, ease: "easeInOut" }
-            }}
-            className="relative mb-12 sm:mb-14"
-          >
-            <img src="/banner.jpg" alt="Banner" className="w-full h-full object-cover" />
-            <motion.div 
-              className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white p-4"
-              initial={{ opacity: 1 }}
-              animate={{ opacity: isAnimationComplete ? 0.5 : 1 }}
-              transition={{ duration: 1 }}
+        <>
+          <Head>
+            <link rel="icon" href="/GmLogo.png" type="image/png" />
+          </Head>
+          <div className="min-h-screen bg-gray-100 text-gray-800 overflow-hidden">
+            <motion.div
+              initial={{ height: "100vh", width: "100vw" }}
+              animate={{ 
+                height: isAnimationComplete ? "16rem" : "100vh",
+                width: "100%",
+                transition: { duration: 1, ease: "easeInOut" }
+              }}
+              className="relative mb-12 sm:mb-14"
             >
-              <motion.h1 
-                className="text-2xl sm:text-4xl font-bold mb-3 text-center"
-                initial={{ scale: 1.5 }}
-                animate={{ scale: isAnimationComplete ? 1 : 1.5 }}
+              <img src="/banner.jpg" alt="Banner" className="w-full h-full object-cover" />
+              <motion.div 
+                className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white p-4"
+                initial={{ opacity: 1 }}
+                animate={{ opacity: isAnimationComplete ? 0.5 : 1 }}
                 transition={{ duration: 1 }}
               >
-                <WordFadeIn words="Garrett Meyer" delay={0.1} className="text-white" />
-              </motion.h1>
-              <motion.div
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.75, duration: 0.5 }}
-              >
-                <GradualSpacing
-                  text="Producer, Engineer, Songwriter"
-                  className="text-base sm:text-xl font-bold"
-                />
+                <motion.h1 
+                  className="text-2xl sm:text-4xl font-bold mb-3 text-center"
+                  initial={{ scale: 1.5 }}
+                  animate={{ scale: isAnimationComplete ? 1 : 1.5 }}
+                  transition={{ duration: 1 }}
+                >
+                  <WordFadeIn words="Garrett Meyer" delay={0.1} className="text-white" />
+                </motion.h1>
+                <motion.div
+                  className="text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.75, duration: 0.5 }}
+                >
+                  <GradualSpacing
+                    text="Producer, Engineer, Songwriter"
+                    className="text-base sm:text-xl font-bold"
+                  />
+                </motion.div>
               </motion.div>
             </motion.div>
-          </motion.div>
-    
-          <AnimatePresence>
-            {isAnimationComplete && (
-              <motion.div 
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="container mx-auto px-4 sm:px-6 lg:px-8"
-              >
-                <section className="mb-16">
-                  <div className="mb-6 sm:mb-8 flex justify-end">
-                    <motion.button
-                      onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-                      className="bg-white text-black px-4 sm:px-6 py-2 rounded-md shadow-sm hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 font-sans border border-gray-200"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {sortOrder === 'asc' ? (
-                        <>
-                          <FaSortAmountUp className="mr-1 sm:mr-2" />
-                          <span className="text-sm sm:text-base">Oldest</span>
-                        </>
-                      ) : (
-                        <>
-                          <FaSortAmountDown className="mr-1 sm:mr-2" />
-                          <span className="text-sm sm:text-base">Newest</span>
-                        </>
-                      )}
-                    </motion.button>
-                  </div>
+      
+            <AnimatePresence>
+              {isAnimationComplete && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="container mx-auto px-4 sm:px-6 lg:px-8"
+                >
+                  <section className="mb-16">
+                    <div className="mb-6 sm:mb-8 flex justify-end">
+                      <motion.button
+                        onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
+                        className="bg-white text-black px-4 sm:px-6 py-2 rounded-md shadow-sm hover:bg-gray-100 transition-all duration-300 flex items-center space-x-2 font-sans border border-gray-200"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {sortOrder === 'asc' ? (
+                          <>
+                            <FaSortAmountUp className="mr-1 sm:mr-2" />
+                            <span className="text-sm sm:text-base">Oldest</span>
+                          </>
+                        ) : (
+                          <>
+                            <FaSortAmountDown className="mr-1 sm:mr-2" />
+                            <span className="text-sm sm:text-base">Newest</span>
+                          </>
+                        )}
+                      </motion.button>
+                    </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-                    {filteredTracks.map((track) => (
-                      <div key={track.id}>
-                        <TrackCard track={track} />
-                      </div>
-                    ))}
-                  </div>
-                </section>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                      {filteredTracks.map((track) => (
+                        <div key={track.id}>
+                          <TrackCard track={track} />
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </>
       );
     }
