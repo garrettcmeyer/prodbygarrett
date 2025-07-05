@@ -1,8 +1,8 @@
     "use client";
     import React, { useState, useEffect, useRef } from 'react'
     import { motion, AnimatePresence } from 'framer-motion'
-    import { FaSpotify, FaApple, FaPlay, FaPause, FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
-    import { SiApplemusic } from 'react-icons/si'
+    import { FaSpotify, FaApple, FaPlay, FaPause, FaSortAmountDown, FaSortAmountUp, FaInstagram, FaYoutube, FaEnvelope } from 'react-icons/fa'
+import { SiApplemusic } from 'react-icons/si'
     import GradualSpacing from '@/components/magicui/gradual-spacing'
     import WordFadeIn from '@/components/magicui/word-fade-in'
     import VideoPortfolio from './VideoPortfolio'
@@ -91,7 +91,7 @@
         endTime: 85,
       },
       {
-        id: 6,
+        id: 7,
         title: 'Banky',
         artist: 'nollie',
         coverArt: '/songs/banky/banky.png',
@@ -104,7 +104,7 @@
         endTime: 130,
       },
       {
-        id: 7,
+        id: 8,
         title: 'Care',
         artist: 'Sarah Good',
         coverArt: '/songs/care/care.jpg',
@@ -115,6 +115,19 @@
         audioPreview: '/songs/care/care.wav',
         startTime: 82,
         endTime: 110,
+      },
+      {
+        id: 9,
+        title: 'Tomorrow\'s Today',
+        artist: 'Keegan Boustead',
+        coverArt: '/songs/tmrwtoday/TmrwToday.png',
+        credits: 'Co-Wrote, Produced, Recorded, Mix/Mastered',
+        releaseDate: '2025-07-04',
+        spotifyLink: 'https://open.spotify.com/track/5q3LESAzbwlCkJ68F8IDUz?si=5a940703382d465c',
+        appleMusicLink: 'https://music.apple.com/us/album/tomorrows-today/1823437811?i=1823437812',
+        audioPreview: '/songs/tmrwtoday/TmrwToday.wav',
+        startTime: 113,
+        endTime: 134,
       },
     ]
     
@@ -199,7 +212,7 @@
           <div className="p-4">
             <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-1">{track.title}</h3>
             <p className="text-sm sm:text-gray-600 mb-2">{track.artist}</p>
-            <p className="text-xs sm:text-sm text-gray-500 mb-2">{new Date(track.releaseDate).toLocaleDateString()}</p>
+            <p className="text-xs text-gray-500 mb-2">{new Date(track.releaseDate).toLocaleDateString()}</p>
             <AudioPlayer src={track.audioPreview} startTime={track.startTime} endTime={track.endTime} />
                 <div className="flex justify-between mt-4">
                   <a href={track.spotifyLink} target="_blank" rel="noopener noreferrer" className="text-green-500 hover:text-green-600">
@@ -282,10 +295,44 @@
                     className="text-base sm:text-xl font-bold"
                   />
                 </motion.div>
-              </motion.div>
-            </motion.div>
-      
-            <AnimatePresence>
+                          </motion.div>
+          </motion.div>
+
+          {/* Social Media Links */}
+          <div className="flex justify-center mb-4">
+            <motion.a
+              href="https://www.instagram.com/garrettmeyermusic"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-pink-500 transition-colors duration-300 mx-2"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <FaInstagram size={24} />
+            </motion.a>
+            <motion.a
+              href="https://www.youtube.com/@prodbygarrettm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-red-500 transition-colors duration-300 mx-2"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <FaYoutube size={24} />
+            </motion.a>
+            <motion.a
+              href="mailto:garrettcmeyer@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-blue-500 transition-colors duration-300 mx-2"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <FaEnvelope size={24} />
+            </motion.a>
+          </div>
+
+          <AnimatePresence>
               {isAnimationComplete && (
                 <motion.div 
                   initial={{ opacity: 0, y: 50 }}
