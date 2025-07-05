@@ -274,7 +274,7 @@ export default function SongManager() {
               </div>
             ) : (
               <div className="text-gray-500 text-center py-8">
-                Fill out the form and click "Generate Code" to see the output
+                Fill out the form and click &quot;Generate Code&quot; to see the output
               </div>
             )}
           </div>

@@ -4,11 +4,12 @@
     import { FaSpotify, FaApple, FaPlay, FaPause, FaSortAmountDown, FaSortAmountUp, FaInstagram, FaYoutube, FaEnvelope } from 'react-icons/fa'
 import { SiApplemusic } from 'react-icons/si'
     import GradualSpacing from '@/components/magicui/gradual-spacing'
-    import WordFadeIn from '@/components/magicui/word-fade-in'
-    import VideoPortfolio from './VideoPortfolio'
+import WordFadeIn from '@/components/magicui/word-fade-in'
+import VideoPortfolio from './VideoPortfolio'
+import Image from 'next/image'
 
-    // Add favicon using next/head or react-helmet
-    import Head from 'next/head'
+// Add favicon using next/head or react-helmet
+import Head from 'next/head'
 
     // Mock data for tracks
     const tracks = [
@@ -204,7 +205,7 @@ import { SiApplemusic } from 'react-icons/si'
           transition={{ duration: 0.5 }}
         >
           <div className="relative aspect-w-1 aspect-h-1">
-            <img src={track.coverArt} alt={`${track.title} cover art`} className="w-full h-full object-cover object-center" />
+            <Image src={track.coverArt} alt={`${track.title} cover art`} fill className="object-cover object-center" />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 p-2">
               <p className="text-white text-sm text-center">{track.credits}</p>
             </div>
@@ -269,7 +270,7 @@ import { SiApplemusic } from 'react-icons/si'
               }}
               className="relative mb-12 sm:mb-14"
             >
-              <img src="/banner.jpg" alt="Banner" className="w-full h-full object-cover" />
+              <Image src="/banner.jpg" alt="Banner" fill className="object-cover" />
               <motion.div 
                 className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white p-4"
                 initial={{ opacity: 1 }}
