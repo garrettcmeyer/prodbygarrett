@@ -129,7 +129,7 @@ export const designProjects: DesignProject[] = [
     role: 'Motion Designer',
     tools: ['After Effects']
   },
-  {
+  /*{
     id: 'rush-videos',
     slug: 'rush-videos',
     order: 6,
@@ -157,10 +157,10 @@ export const designProjects: DesignProject[] = [
     ],
     role: 'Video Editor',
     tools: ['Premiere Pro', 'After Effects']
-  },
+  },*/
   {
     id: 'rush-graphics',
-    order: 7,
+    order: 6,
     slug: 'rush-graphics',
     title: 'Fraternity Graphics',
     category: 'campus',
@@ -168,7 +168,7 @@ export const designProjects: DesignProject[] = [
     year: 2024,
     cover: {
       type: 'image',
-      src: '/designs/fraternity/Rush Card Cover.png'
+      src: '/designs/fraternity/alphacrest.png'
     },
     description: 'Recruitment graphics and promotional materials for fraternity events. Includes recruitment cards and event graphics.',
     media: [
