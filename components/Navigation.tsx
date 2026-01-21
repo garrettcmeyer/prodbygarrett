@@ -8,9 +8,14 @@ import { FaMusic, FaUser, FaEnvelope, FaPalette } from 'react-icons/fa';
 export default function Navigation() {
   const pathname = usePathname();
 
+  // Hide navigation on landing page
+  if (pathname === '/') {
+    return null;
+  }
+
   const navItems = [
-    { href: '/producer', label: 'Producer', icon: FaMusic },
-    { href: '/designer', label: 'Designer', icon: FaPalette },
+    { href: '/producer', label: 'Productions', icon: FaMusic },
+    { href: '/designer', label: 'Designs', icon: FaPalette },
     { href: '/about', label: 'About', icon: FaUser },
     { href: '/contact', label: 'Contact', icon: FaEnvelope },
   ];

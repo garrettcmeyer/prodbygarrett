@@ -238,7 +238,7 @@ import Head from 'next/head'
         setIsClient(true);
         const timer = setTimeout(() => {
           setIsAnimationComplete(true);
-        }, 2000); // Adjust this timing as needed
+        }, 1000); // 1 second intro animation
         return () => clearTimeout(timer);
       }, []);
     
