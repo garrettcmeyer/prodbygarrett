@@ -5,7 +5,7 @@
 import { SiApplemusic } from 'react-icons/si'
     import GradualSpacing from '@/components/magicui/gradual-spacing'
 import WordFadeIn from '@/components/magicui/word-fade-in'
-import VideoPortfolio from './VideoPortfolio'
+
 
 
 // Add favicon using next/head or react-helmet

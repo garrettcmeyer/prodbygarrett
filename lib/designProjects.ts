@@ -109,7 +109,7 @@ export const designProjects: DesignProject[] = [
     id: 'claw-square',
     slug: 'claw-square',  
     order: 5,
-    title: 'Claw Square Animation',
+    title: 'Claw Machine Animation',
     category: 'liatrio',
     mediaType: 'videos',
     year: 2025,
@@ -146,13 +146,13 @@ export const designProjects: DesignProject[] = [
     media: [
       {
         type: 'video',
-        src: '/designs/fraternity/RushVid 11.mp4',
-        caption: 'Fall 2025 Rush Video'
+        src: '/designs/fraternity/Rush Video Fall 2024.mp4',
+        caption: 'Fall 2024 Rush Video'
       },
       {
         type: 'video',
-        src: '/designs/fraternity/Rush Video Fall 2024.mp4',
-        caption: 'Fall 2024 Rush Video'
+        src: '/designs/fraternity/RushVid 11.mp4',
+        caption: 'Fall 2025 Rush Video'
       }
     ],
     role: 'Video Editor',
@@ -241,8 +241,8 @@ export const designProjects: DesignProject[] = [
         type: 'carousel',
         slides: [
           { src: '/designs/covers/cover 1.png', alt: 'Cover 1' },
-          { src: '/designs/covers/cover 2.png', alt: 'Cover 2' },
           { src: '/designs/covers/cover 3.png', alt: 'Cover 3' },
+          { src: '/designs/covers/cover 2.png', alt: 'Cover 2' },
           { src: '/designs/covers/cover 4.png', alt: 'Cover 4' },
           { src: '/designs/covers/cover 5.png', alt: 'Cover 5' },
           { src: '/designs/covers/cover 6.png', alt: 'Cover 6' },

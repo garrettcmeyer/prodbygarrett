@@ -68,7 +68,7 @@ export default function Component() {
         title: "Audio Engineering Intern",
         subtitle: "Amplified Studios",
         date: "June 2024 - August 2024",
-        description: "Setup sessions for artists to record music and podcasts. Assisted in the operation of recording equipment."
+        description: "Setup sessions for artists to record music and podcasts. Assisted in the operation of recording equipment. Delivered and operated equipment for a live show."
       },
     ],
     education: [
@@ -77,15 +77,8 @@ export default function Component() {
         title: "BA in Recording Arts",
         subtitle: "Chico State",
         date: "Graduation: May 2026",
-        description: "Audio Engineering and Music Production with emphasis on operating consoles"
+        description: "Audio Engineering and Music Production, Minor in Computer Science"
       },
-      {
-        logo: "/icons/chicostate.jpg",
-        title: "BA in Computer Science",
-        subtitle: "Chico State",
-        date: "Graduation: May 2028",
-        description: ""
-      }
     ]
   }
 
