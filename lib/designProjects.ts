@@ -203,7 +203,7 @@ export const designProjects: DesignProject[] = [
     title: 'LinkedIn Graphics',
     category: 'liatrio',
     mediaType: 'photos',
-    year: 2024,
+    year: 2025,
     cover: {
       type: 'image',
       src: '/designs/liatrio/AI blooms.png'
