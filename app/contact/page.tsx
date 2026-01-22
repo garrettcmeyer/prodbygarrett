@@ -17,7 +17,7 @@ export default function ContactPage() {
             Get In Touch
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 mb-12 text-center">
-            Let's work together on your next project
+            Let&apos;s work together on your next project
           </p>
 
           <div className="bg-white rounded-lg shadow-lg p-8 sm:p-12">
