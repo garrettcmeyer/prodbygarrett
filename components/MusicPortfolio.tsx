@@ -11,12 +11,50 @@ import WordFadeIn from '@/components/magicui/word-fade-in'
 // Add favicon using next/head or react-helmet
 import Head from 'next/head'
 
+    type TrackPreview = {
+      title: string;
+      audioPreview: string;
+      startTime: number;
+      endTime: number;
+    };
+
+    type SingleTrack = {
+      type: 'single';
+      id: number;
+      title: string;
+      artist: string;
+      coverArt: string;
+      credits: string;
+      releaseDate: string;
+      spotifyLink: string;
+      appleMusicLink: string;
+      audioPreview: string;
+      startTime: number;
+      endTime: number;
+    };
+
+    type EPTrack = {
+      type: 'ep';
+      id: number;
+      title: string;
+      artist: string;
+      coverArt: string;
+      credits: string;
+      releaseDate: string;
+      spotifyLink: string;
+      appleMusicLink: string;
+      tracks: TrackPreview[];
+    };
+
+    type MusicItem = SingleTrack | EPTrack;
+
     // Mock data for tracks
-    const tracks = [
-      { 
+    const tracks: MusicItem[] = [
+      {
+        type: 'single',
         id: 1,
         title: 'Flip the Script',
-        artist: 'Chloe Hansen', 
+        artist: 'Chloe Hansen',
         coverArt: '/songs/flipthescript/flipthescript.png',
         credits: 'Produced and played all instruments, Co-Wrote, Mixed, Cover Art',
         releaseDate: '2024-08-23',
@@ -27,6 +65,7 @@ import Head from 'next/head'
         endTime: 105, // End at 105 seconds
       },
       {
+        type: 'single',
         id: 2,
         title: 'Attached',
         artist: 'GoodMerit, Chloe Hansen',
@@ -40,6 +79,7 @@ import Head from 'next/head'
         endTime: 60,
       },
       {
+        type: 'single',
         id: 3,
         title: 'Green Chalk',
         artist: 'GoodMerit',
@@ -53,6 +93,7 @@ import Head from 'next/head'
         endTime: 45,
       },
       {
+        type: 'single',
         id: 4,
         title: 'Again',
         artist: 'Garrett Meyer, Chloe Hansen, Keegan Boustead',
@@ -66,6 +107,7 @@ import Head from 'next/head'
         endTime: 90,
       },
       {
+        type: 'single',
         id: 5,
         title: 'Least of Your Worries',
         artist: 'Chloe Hansen',
@@ -79,6 +121,7 @@ import Head from 'next/head'
         endTime: 75,
       },
       {
+        type: 'single',
         id: 6,
         title: 'Summer Fling',
         artist: 'Keegan Boustead',
@@ -92,6 +135,7 @@ import Head from 'next/head'
         endTime: 85,
       },
       {
+        type: 'single',
         id: 7,
         title: 'Banky',
         artist: 'nollie',
@@ -105,6 +149,7 @@ import Head from 'next/head'
         endTime: 130,
       },
       {
+        type: 'single',
         id: 8,
         title: 'Care',
         artist: 'Sarah Good',
@@ -118,6 +163,7 @@ import Head from 'next/head'
         endTime: 110,
       },
       {
+        type: 'single',
         id: 9,
         title: 'Tomorrow\'s Today',
         artist: 'Keegan Boustead',
@@ -130,8 +176,33 @@ import Head from 'next/head'
         startTime: 113,
         endTime: 134,
       },
+      {
+        type: 'ep',
+        id: 10,
+        title: 'Sound of Your Voice',
+        artist: 'Joey Denatale',
+        coverArt: '/songs/soundofyourvoice/soundofyourvoice.png',
+        credits: 'Produced, Recorded, Mix/Mastered',
+        releaseDate: '2026-02-08',
+        spotifyLink: 'https://open.spotify.com/track/2EqVPOMCnqL2BhroMwemQW?si=cb78139e51964326',
+        appleMusicLink: 'https://music.apple.com/us/album/sound-of-your-voice-feat-garrett-meyer/1873468236?i=1873468237',
+        tracks: [
+          {
+            title: 'Sound of your voice',
+            audioPreview: '/songs/soundofyourvoice/soundofyourvoice.wav',
+            startTime: 70,
+            endTime: 100,
+          },
+          {
+            title: 'Left side',
+            audioPreview: '/songs/leftside/leftside.wav',
+            startTime: 29.5,
+            endTime: 70,
+          },
+        ],
+      },
     ]
-    
+
     const AudioPlayer = ({ src, startTime, endTime }: { src: string; startTime: number; endTime: number }) => {
       const [isPlaying, setIsPlaying] = useState(false)
       const [progress, setProgress] = useState(0)
@@ -195,7 +266,9 @@ import Head from 'next/head'
       )
     }
     
-    const TrackCard = ({ track }: { track: typeof tracks[0] }) => {
+    const TrackCard = ({ track }: { track: MusicItem }) => {
+      const [activeEpIndex, setActiveEpIndex] = useState(0);
+
       return (
         <motion.div
           className="bg-white rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105"
@@ -211,10 +284,44 @@ import Head from 'next/head'
             </div>
           </div>
           <div className="p-4">
-            <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-1">{track.title}</h3>
+            <div className="flex items-center justify-between gap-2 mb-1">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-800">{track.title}</h3>
+              {track.type === 'ep' && (
+                <span className="text-[10px] sm:text-xs uppercase tracking-widest bg-black text-white px-2 py-1 rounded-full">
+                  EP
+                </span>
+              )}
+            </div>
             <p className="text-sm sm:text-gray-600 mb-2">{track.artist}</p>
             <p className="text-xs text-gray-500 mb-2">{new Date(track.releaseDate).toLocaleDateString()}</p>
-            <AudioPlayer src={track.audioPreview} startTime={track.startTime} endTime={track.endTime} />
+            {track.type === 'single' ? (
+              <AudioPlayer src={track.audioPreview} startTime={track.startTime} endTime={track.endTime} />
+            ) : (
+              <div className="space-y-2">
+                <div className="flex flex-wrap gap-2">
+                  {track.tracks.map((epTrack, index) => (
+                    <button
+                      key={`${track.id}-${index}`}
+                      type="button"
+                      onClick={() => setActiveEpIndex(index)}
+                      className={`text-xs sm:text-sm px-2.5 py-1 rounded-full border transition-colors ${
+                        activeEpIndex === index
+                          ? 'bg-white text-gray-900 border-gray-900 ring-1 ring-gray-900/40'
+                          : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      {epTrack.title}
+                    </button>
+                  ))}
+                </div>
+                <AudioPlayer
+                  key={`${track.id}-${activeEpIndex}`}
+                  src={track.tracks[activeEpIndex].audioPreview}
+                  startTime={track.tracks[activeEpIndex].startTime}
+                  endTime={track.tracks[activeEpIndex].endTime}
+                />
+              </div>
+            )}
                 <div className="flex justify-between mt-4">
                   <a href={track.spotifyLink} target="_blank" rel="noopener noreferrer" className="text-green-500 hover:text-green-600">
                     <FaSpotify className="w-5 h-5 sm:w-6 sm:h-6" />
