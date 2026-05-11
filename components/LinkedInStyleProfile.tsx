@@ -64,6 +64,13 @@ export default function Component() {
   const profile = {
     experiences: [
       {
+        logo: "/icons/liatrio.png",
+        title: "Visual Content Designer",
+        subtitle: "Liatrio",
+        date: "Sep 2025 - Present",
+        description: "Producing creative assets for Liatrio's marketing efforts, including video editing for paid ad campaigns, graphic design for social media, and visual content development in Canva. Supporting brand and campaign initiatives across LinkedIn and other platforms."
+      },
+      {
         logo: "/icons/amplified.png",
         title: "Audio Engineering Intern",
         subtitle: "Amplified Studios",

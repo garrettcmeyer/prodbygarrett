@@ -53,7 +53,7 @@ export const designProjects: DesignProject[] = [
   {
     id: 'santacruz-christmas',
     slug: 'santacruz-christmas',
-    order: 1,
+    order: 3,
     title: 'Santa Cruz Christmas Campaign',
     category: 'freelance',
     mediaType: 'photos',
@@ -82,9 +82,33 @@ export const designProjects: DesignProject[] = [
     tools: ['Adobe Photoshop', 'Adobe Illustrator']
   },
   {
+    id: 'linkedin-rebrand-ad',
+    slug: 'linkedin-rebrand-ad',
+    order: 1,
+    title: 'LinkedIn Rebrand Ad Campaign',
+    category: 'liatrio',
+    mediaType: 'videos',
+    year: 2026,
+    cover: {
+      type: 'video',
+      src: '/designs/liatrio/Flower Tag Line Final.mp4',
+      poster: '/designs/liatrio/Flower Tag Line Cover.png'
+    },
+    description: 'Executed LinkedIn paid ad campaign supporting Liatrio\'s rebrand to an AI-first enablement consultancy, achieving a 0.63% CTR (above the B2B benchmark) and a $4.10 CPC — roughly 50% below typical LinkedIn rates for enterprise audiences. Campaign ran ~16 days with $676.50 spend, generating 26,377 impressions and 165 clicks targeting B2B enterprise decision-makers.',
+    media: [
+      {
+        type: 'video',
+        src: '/designs/liatrio/Flower Tag Line Final.mp4',
+        caption: 'LinkedIn paid ad creative — Liatrio AI-first rebrand campaign'
+      }
+    ],
+    role: 'Marketing Intern — Campaign Execution, Creative, Targeting, Performance Monitoring',
+    tools: ['LinkedIn Campaign Manager', 'After Effects']
+  },
+  {
     id: 'slot-machine-animation',
     slug: 'slot-machine-animation',
-    order: 3,
+    order: 4,
     title: 'LinkedIn Slot Machine',
     category: 'liatrio',
     mediaType: 'videos',
@@ -106,99 +130,8 @@ export const designProjects: DesignProject[] = [
     tools: ['After Effects']
   },
   {
-    id: 'claw-square',
-    slug: 'claw-square',  
-    order: 5,
-    title: 'Claw Machine Animation',
-    category: 'liatrio',
-    mediaType: 'videos',
-    year: 2025,
-    cover: {
-      type: 'video',
-      src: '/designs/liatrio/Claw square.mp4',
-      poster: '/designs/liatrio/Claw Machine Cover.png'
-    },
-    description: 'Claw machine animation designed for Liatrio\'s LinkedIn platform. Animation designed to represent company culture.',
-    media: [
-      {
-        type: 'video',
-        src: '/designs/liatrio/Claw square.mp4',
-        caption: 'Claw Machine Animation - Company Culture'
-      }
-    ],
-    role: 'Motion Designer',
-    tools: ['After Effects']
-  },
-  /*{
-    id: 'rush-videos',
-    slug: 'rush-videos',
-    order: 6,
-    title: 'Fraternity Rush Videos',
-    category: 'campus',
-    mediaType: 'videos',
-    year: 2025,
-    cover: {
-      type: 'video',
-      src: '/designs/fraternity/Rush Video Fall 2024.mp4',
-      poster: '/designs/fraternity/alphacrest.png'
-    },
-    description: 'Two rush videos designed for fraternity rush events. Engaging video to attract and inform potential members.',
-    media: [
-      {
-        type: 'video',
-        src: '/designs/fraternity/Rush Video Fall 2024.mp4',
-        caption: 'Fall 2024 Rush Video'
-      },
-      {
-        type: 'video',
-        src: '/designs/fraternity/RushVid 11.mp4',
-        caption: 'Fall 2025 Rush Video'
-      }
-    ],
-    role: 'Video Editor',
-    tools: ['Premiere Pro', 'After Effects']
-  },*/
-  {
-    id: 'rush-graphics',
-    order: 6,
-    slug: 'rush-graphics',
-    title: 'Fraternity Graphics',
-    category: 'campus',
-    mediaType: 'photos',
-    year: 2024,
-    cover: {
-      type: 'image',
-      src: '/designs/fraternity/alphacrest.png'
-    },
-    description: 'Recruitment graphics and promotional materials for fraternity events. Includes recruitment cards and event graphics.',
-    media: [
-      {
-        type: 'image',
-        src: '/designs/fraternity/Rush Card 2x3.5.png',
-        alt: 'Fraternity Rush Card',
-        caption: 'Recruitment card design - 2x3.5 inch format'
-      },
-      {
-        type: 'image',
-        src: '/designs/fraternity/Spring Rush.png',
-        alt: 'Spring Rush Graphic',
-        caption: 'Spring Rush promotional graphic'
-      },
-      {
-      type: 'carousel',
-        slides: [
-          { src: '/designs/fraternity/BingoboardFront.png', alt: 'Bingo Board Front' },
-          { src: '/designs/fraternity/BingoBoardBack.png', alt: 'Bingo Board Back' }
-        ],
-        caption: 'Event materials - Bingo board design'
-      }
-    ],
-    role: 'Graphic Designer',
-    tools: ['Adobe Illustrator', 'Adobe Photoshop']
-  },
-  {
     id: 'linkedin-graphics',
-    order: 4,
+    order: 5,
     slug: 'linkedin-graphics',
     title: 'LinkedIn Graphics',
     category: 'liatrio',
@@ -227,6 +160,7 @@ export const designProjects: DesignProject[] = [
     id: 'music-covers',
     order: 2,
     slug: 'music-covers',
+
     title: 'Music Covers',
     category: 'freelance',
     mediaType: 'photos',
