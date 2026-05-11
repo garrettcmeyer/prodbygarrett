@@ -131,26 +131,29 @@ export const designProjects: DesignProject[] = [
   },
   {
     id: 'linkedin-graphics',
-    order: 5,
+    order: 2,
     slug: 'linkedin-graphics',
     title: 'LinkedIn Graphics',
     category: 'liatrio',
     mediaType: 'photos',
-    year: 2025,
+    year: 2026,
     cover: {
       type: 'image',
-      src: '/designs/liatrio/AI blooms.png'
+      src: '/designs/liatrio/Temporal Replay.png'
     },
-    description: 'A collection of graphic design concepts for Liatrio\'s LinkedIn platform. Includes AI-themed graphics, batch designs, and culture-focused visuals.',
+    description: 'A collection of graphic design concepts for Liatrio\'s LinkedIn platform. Includes AI-themed graphics, batch designs, culture-focused visuals, and event promotional materials.',
     media: [
       {
         type: 'carousel',
         slides: [
+          { src: '/designs/liatrio/Temporal Replay.png', alt: 'Temporal Replay Conference - San Francisco' },
           { src: '/designs/liatrio/AI blooms.png', alt: 'AI Blooms' },
           { src: '/designs/liatrio/Batches.png', alt: 'Batches' },
-          { src: '/designs/liatrio/CultureDesign.png', alt: 'Culture Design' }
+          { src: '/designs/liatrio/CultureDesign.png', alt: 'Culture Design' },
+          { src: '/designs/liatrio/Valentines.png', alt: 'Valentines Day - Not Afraid to Commit' },
+          { src: '/designs/liatrio/Womens Day.png', alt: 'International Womens Day 2026' }
         ],
-        caption: 'LinkedIn graphics - AI blooms, Batches, and Culture Design'
+        caption: 'LinkedIn graphics for Liatrio'
       }
     ],
     role: 'Graphic Designer',
@@ -158,7 +161,7 @@ export const designProjects: DesignProject[] = [
   },
   {
     id: 'music-covers',
-    order: 2,
+    order: 5,
     slug: 'music-covers',
 
     title: 'Music Covers',
