@@ -94,7 +94,7 @@ export const designProjects: DesignProject[] = [
       src: '/designs/liatrio/Flower Tag Line Final.mp4',
       poster: '/designs/liatrio/Flower Tag Line Cover.png'
     },
-    description: 'Video ad creative for Liatrio\'s LinkedIn rebrand campaign, positioning the company as an AI-first enablement consultancy. Fully conceptualized and edited the video from scratch.',
+    description: 'Video ad creative for Liatrio\'s LinkedIn rebrand campaign, positioning the company as an AI-first enablement consultancy. Fully conceptualized and edited the video from scratch. The campaign achieved a CTR above B2B benchmarks at roughly half the typical LinkedIn CPC.',
     media: [
       {
         type: 'video',
