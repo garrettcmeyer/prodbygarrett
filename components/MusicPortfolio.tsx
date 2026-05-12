@@ -3,6 +3,7 @@
     import { motion, AnimatePresence } from 'framer-motion'
     import { FaSpotify, FaApple, FaPlay, FaPause, FaSortAmountDown, FaSortAmountUp, FaInstagram, FaYoutube, FaEnvelope } from 'react-icons/fa'
 import { SiApplemusic } from 'react-icons/si'
+import Image from 'next/image'
     import GradualSpacing from '@/components/magicui/gradual-spacing'
 import WordFadeIn from '@/components/magicui/word-fade-in'
 
@@ -277,8 +278,8 @@ import Head from 'next/head'
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <div className="relative aspect-w-1 aspect-h-1">
-            <img src={track.coverArt} alt={`${track.title} cover art`} className="w-full h-full object-cover object-center" />
+          <div className="relative aspect-square">
+            <Image src={track.coverArt} alt={`${track.title} cover art`} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover object-center" />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 p-2">
               <p className="text-white text-sm text-center">{track.credits}</p>
             </div>
@@ -377,7 +378,7 @@ import Head from 'next/head'
               }}
               className="relative mb-12 sm:mb-14"
             >
-              <img src="/banner.jpg" alt="Banner" className="w-full h-full object-cover" />
+              <Image src="/banner.jpg" alt="Banner" fill sizes="100vw" className="object-cover" priority />
               <motion.div 
                 className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-white p-4"
                 initial={{ opacity: 1 }}

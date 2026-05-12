@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import Image from 'next/image';
 import { designProjects, DesignProject, MediaType } from '@/lib/designProjects';
 import DesignProjectModal from './DesignProjectModal';
 
@@ -102,14 +103,17 @@ export default function DesignPortfolio() {
               onClick={() => handleProjectClick(project)}
             >
               <div className="relative aspect-square w-full overflow-hidden bg-gray-100">
-                <img
+                <Image
                     src={
                       project.cover.type === 'image'
                         ? project.cover.src
-                        : project.cover.poster
+                        : project.cover.poster!
                     }
                     alt={project.title}
-                    className="absolute inset-0 w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover group-hover:opacity-90 transition-opacity duration-300"
+                    loading={index < 4 ? 'eager' : 'lazy'}
                     />
                 {/* Subtle overlay on hover */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
