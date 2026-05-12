@@ -94,16 +94,16 @@ export const designProjects: DesignProject[] = [
       src: '/designs/liatrio/Flower Tag Line Final.mp4',
       poster: '/designs/liatrio/Flower Tag Line Cover.png'
     },
-    description: 'Executed LinkedIn paid ad campaign supporting Liatrio\'s rebrand to an AI-first enablement consultancy, achieving a 0.63% CTR (above the B2B benchmark) and a $4.10 CPC — roughly 50% below typical LinkedIn rates for enterprise audiences. Campaign ran ~16 days with $676.50 spend, generating 26,377 impressions and 165 clicks targeting B2B enterprise decision-makers.',
+    description: 'Video ad creative for Liatrio\'s LinkedIn rebrand campaign, positioning the company as an AI-first enablement consultancy. Fully conceptualized and edited the video from scratch.',
     media: [
       {
         type: 'video',
         src: '/designs/liatrio/Flower Tag Line Final.mp4',
-        caption: 'LinkedIn paid ad creative — Liatrio AI-first rebrand campaign'
+        caption: 'LinkedIn ad creative — Liatrio AI-first rebrand'
       }
     ],
-    role: 'Marketing Intern — Campaign Execution, Creative, Targeting, Performance Monitoring',
-    tools: ['LinkedIn Campaign Manager', 'After Effects']
+    role: 'Video Editor, Creative Director',
+    tools: ['After Effects']
   },
   {
     id: 'slot-machine-animation',
